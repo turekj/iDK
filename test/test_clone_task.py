@@ -12,6 +12,7 @@ class TestCloneTask(object):
 		with pytest.raises(core.task.TaskParameterException):
 			self.task.execute_task({'repository_type': 'git', 'repository_path': 'git@github.com:turekj/iDK.git', 'clone_path': 'test/project_clone'})
 
+	@pytest.mark.slow
 	def test_execute_clones_svn_repository(self):
 		os.mkdir('test/project_clone')
 		
