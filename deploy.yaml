@@ -1,1 +1,3 @@
 tasks:
+    create_dir:
+        path: project_copy

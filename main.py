@@ -2,7 +2,7 @@ import argparse
 import core.config
 import core.discovery
 import core.executor
-import tasks.tasks
+import tasks
 
 
 def main():

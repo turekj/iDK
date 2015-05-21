@@ -8,9 +8,9 @@ class CreateDirectoryTask(core.task.Task):
 			path = parameters['path']
 			
 			if os.path.exists(path):
-				raise core.task.TaskGenericException('path %s already exists!' % path)
+				raise core.task.TaskGenericException('path %s already exists' % path)
 			else:
 				os.mkdir(path)
 		else:
-			raise core.task.TaskParameterException('path', 'parameter is mandatory!')
+			raise core.task.TaskParameterException('path', 'parameter is mandatory')
 		

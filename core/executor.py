@@ -1,4 +1,6 @@
 import core.task
+import traceback
+import sys
 
 
 class TaskExecutor(object):
@@ -10,8 +12,12 @@ class TaskExecutor(object):
 			try:
 				print "Executing task %s..." % task_configuration.name
 
-				task = self.discovered_tasks[task_configuration.name]
-				task.execute_task(task_configuration.parameters)
+				if task_configuration.name in self.discovered_tasks:
+					task = self.discovered_tasks[task_configuration.name]
+					task.execute_task(task_configuration.parameters)
+				else:
+					print "Unknown task %s!" % task_configuration.name
+					break 
 
 				print "Task %s executed successfully!" % task_configuration.name
 			except core.task.TaskParameterException as e:
@@ -21,5 +27,6 @@ class TaskExecutor(object):
 				print "Exception during %s task execution: %s!" % (task_configuration.name, e.description)
 				break
 			except Exception as e:
-				print "Unknown exception during %s task execution: %s!" % (task_configuration.name, str(e))
+				print "Unknown exception during %s task execution!" % (task_configuration.name)
+				traceback.print_exc()
 				break
