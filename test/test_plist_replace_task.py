@@ -23,7 +23,7 @@ class TestPropertyListReplaceTask(object):
 
 		property_list = plistlib.readPlist('test/res/sample_cp.plist')
 		main_storyboard_file = property_list["UIMainStoryboardFile"]
-		orientantions = property_list["UISupportedInterfaceOrientations"]
+		orientations = property_list["UISupportedInterfaceOrientations"]
 
 		os.remove('test/res/sample_cp.plist')
 
