@@ -1,0 +1,7 @@
+tasks:
+	first_task: 
+		some_parameter: Some parameter value
+		other_parameter: Other parameter value
+	second_task:
+	third_task:
+		stuff: This is stuff
