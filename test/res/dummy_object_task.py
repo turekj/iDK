@@ -1,0 +1,2 @@
+class DummyObjectTask(object):
+	pass
