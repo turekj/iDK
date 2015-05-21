@@ -2,7 +2,7 @@ import argparse
 import core.config
 import core.discovery
 import core.executor
-import tasks.tasks
+import tasks
 
 
 def main():
@@ -11,6 +11,7 @@ def main():
 	args = parser.parse_args()
 
 	execute_config(args.config_file)
+
 
 def execute_config(config_file):
 	print "Executing %s..." % config_file
