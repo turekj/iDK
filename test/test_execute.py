@@ -1,4 +1,5 @@
 import collections
+import core.config
 import core.executor
 import test.res.execution_task
 
@@ -10,7 +11,7 @@ class TestTaskExecutor(object):
 	def test_execute_tasks(self):
 		task_one_parameters = collections.OrderedDict([('param1', 't1p1'), ('param2', 't1p2')])
 		task_two_parameters = collections.OrderedDict([('param1', 't2p1'), ('param2', 't2p2')])
-		tasks = collections.OrderedDict([('task_one', task_one_parameters), ('task_two', task_two_parameters)])
+		tasks = [core.config.TaskConfiguration('task_one', task_one_parameters), core.config.TaskConfiguration('task_two', task_two_parameters)]
 		self.executor.execute_tasks(tasks)
 
 		assert self.task_one.order == 1

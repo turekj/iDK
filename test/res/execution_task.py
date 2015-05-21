@@ -1,21 +1,19 @@
-TaskExecutionOrder = 0
+class TaskStub(object):
+	TaskOrder = 0
 
-
-class TaskOne(object):
 	def __init__(self):
 		self.order = -1
 		self.parameters = None
 
-	def execute_task(**kwargs):
-		self.order = ++TaskExecutionOrder
-		self.parameters = kwargs
+	def execute_task(self, parameters):
+		TaskStub.TaskOrder += 1
+		self.order = TaskStub.TaskOrder
+		self.parameters = parameters
 
 
-class TaskTwo(object):
-	def __init__(self):
-		self.order = -1
-		self.parameters = None
+class TaskOne(TaskStub):
+	pass
 
-	def execute_task(**kwargs):
-		self.order = ++TaskExecutionOrder
-		self.parameters = kwargs
+
+class TaskTwo(TaskStub):
+	pass

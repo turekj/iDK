@@ -3,4 +3,6 @@ class TaskExecutor(object):
 		self.discovered_tasks = discovered_tasks
 
 	def execute_tasks(self, tasks):
-		pass
+		for task_configuration in tasks:
+			task = self.discovered_tasks[task_configuration.name]
+			task.execute_task(task_configuration.parameters)

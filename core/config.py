@@ -1,6 +1,7 @@
 import collections
 import yaml
 
+
 class TaskConfiguration(object):
 	def __init__(self, name, parameters):
 		self.name = name
