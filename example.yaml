@@ -1,0 +1,9 @@
+tasks:
+    create_dir:
+        path: local_path
+    clone:
+        repository_type: svn
+        repository_path: remote_path
+        clone_path: local_path
+    remove_dir:
+        path: local_path

@@ -1,5 +1,6 @@
 import core.task
 import os
+import shutil
 
 
 class RemoveDirectoryTask(core.task.Task):
@@ -10,4 +11,4 @@ class RemoveDirectoryTask(core.task.Task):
 		if not os.path.exists(path):
 			raise core.task.TaskGenericException('path %s does not exist' % path)
 		else:
-			os.rmdir(path)
+			oshutils.rmtree(path)

@@ -1,5 +1,0 @@
-tasks:
-    create_dir:
-        path: project_copy
-    remove_dir:
-        path: project_copy
