@@ -19,6 +19,6 @@ class TestCreateDirectoryTask(object):
 		exists = os.path.exists('test/new_dir')
 
 		if os.path.exists('test/new_dir'):
-			os.remove('test/new_dir')
+			os.rmdir('test/new_dir')
 
 		assert exists is True
