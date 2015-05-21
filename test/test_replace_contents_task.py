@@ -8,7 +8,7 @@ class TestReplaceContentsTask(object):
 
 	def test_execute_task(self):
 		shutil.copy('test/res/CodeSample.m', 'test/res/CodeSampleCp.m')
-		task_parameters = {'path': 'test/res/CodeSampleCp.m', 'to_replace': 'application\\w+', 'replace_with': 'frustration'}
+		task_parameters = {'path': 'test/res/CodeSampleCp.m', 'to_replace': 'application(\\s+)', 'replace_with': 'frustration\\1'}
 		self.task.execute_task(task_parameters)
 
 		code_sample = ''
@@ -18,4 +18,5 @@ class TestReplaceContentsTask(object):
 
 		os.remove('test/res/CodeSampleCp.m')
 
-		assert code_sample == '#import "AppDelegate.h"\n@implementation AppDelegate\n- (BOOL)application:(UIApplication *)frustration didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {\nreturn YES;\n}\n@end'
+		expected = '#import "AppDelegate.h"\n@implementation AppDelegate\n- (BOOL)application:(UIApplication *)frustration didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {\nreturn YES;\n}\n@end\n'
+		assert code_sample == expected
