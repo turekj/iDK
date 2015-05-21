@@ -1,4 +1,5 @@
 import core.config
+import yaml
 
 class TestTaskConfiguration(object):
 	config = core.config.TaskConfigurationLoader()
