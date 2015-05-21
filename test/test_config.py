@@ -17,3 +17,8 @@ class TestTaskConfiguration(object):
 		assert configuration[2].name == 'third_task'
 		assert len(configuration[2].parameters) == 1
 		assert configuration[2].parameters['stuff'] == 'This is stuff'
+
+	def test_load_empty_configuration(self):
+		configuration = self.config.load_configuration('test/res/empty_task.yaml')
+
+		assert len(configuration) == 0
