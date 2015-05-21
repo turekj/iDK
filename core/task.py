@@ -11,6 +11,16 @@ class TaskMetaClass(type):
 class Task(object):
 	__metaclass__ = TaskMetaClass
 
-	def execute_task(self, parameters):
+	def execute_task(self, parameters=None):
 		pass
 
+
+class TaskGenericException(Exception):
+	def __init__(self, description):
+		self.description = description
+
+
+class TaskParameterException(TaskGenericException):
+	def __init__(self, parameter_name, description):
+		self.parameter_name = parameter_name
+		self.description = description

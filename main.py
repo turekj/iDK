@@ -12,6 +12,7 @@ def main():
 
 	execute_config(args.config_file)
 
+
 def execute_config(config_file):
 	print "Executing %s..." % config_file
 
