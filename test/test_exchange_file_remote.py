@@ -1,10 +1,10 @@
 import os
 import shutil
-import tasks.exchange_file_remote
+import tasks.exchange_file_remote_task
 
 
 class TestExchangeFileWithRemoteTask(object):
-	task = tasks.exchange_file_remote.ExchangeFileWithRemoteTask()
+	task = tasks.exchange_file_remote_task.ExchangeFileWithRemoteTask()
 
 	def test_execute_task(self):
 		shutil.copy('test/res/to_be_rid.txt', 'test/res/to_be_rid_cp.txt')
