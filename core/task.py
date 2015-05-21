@@ -11,6 +11,6 @@ class TaskMetaClass(type):
 class Task(object):
 	__metaclass__ = TaskMetaClass
 
-	def execute_task(**kwargs):
+	def execute_task(self, parameters):
 		pass
 

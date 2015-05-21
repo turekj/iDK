@@ -1,6 +1,7 @@
 import collections
 import yaml
 
+
 class TaskConfiguration(object):
 	def __init__(self, name, parameters):
 		self.name = name
@@ -21,8 +22,11 @@ class TaskConfigurationLoader(object):
 		configuration = yaml.load(stream)
 		stream.close()
 
-		if configuration is not None and 'tasks' in configuration:
-			return [TaskConfiguration(name, parameters) for name, parameters in configuration['tasks'].iteritems()]
+		if isinstance(configuration, dict) and 'tasks' in configuration:
+			if isinstance(configuration['tasks'], dict):
+				return [TaskConfiguration(name, parameters) for name, parameters in configuration['tasks'].iteritems()]
+			else:
+				return []
 		else:
 			raise TaskConfigurationLoaderException
 
