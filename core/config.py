@@ -23,10 +23,14 @@ class TaskConfigurationLoader(object):
 		stream.close()
 
 		if isinstance(configuration, dict) and 'tasks' in configuration:
-			if isinstance(configuration['tasks'], dict):
-				return [TaskConfiguration(name, parameters) for name, parameters in configuration['tasks'].iteritems()]
-			else:
-				return []
+			task_list = []
+
+			if isinstance(configuration['tasks'], list):
+				for task in configuration['tasks']:
+					(name, parameters) = task.items()[0]
+					task_list.append(TaskConfiguration(name, parameters))
+
+			return task_list
 		else:
 			raise TaskConfigurationLoaderException
 
