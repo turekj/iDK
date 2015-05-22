@@ -1,9 +1,41 @@
+#   This is the example configuration file for iDK
+#
+#   This would perform following steps:
+#       1. Create project_cp directory.
+#       2. Export SVN repository contents to project_cp directory.
+#       3. Redefine API_KEY to #define API_KEY @"SECRET_API_KEY".
+#       4. Update contents of property list.
+#       5. Exchange splash screen graphics with remote contents.
+#       6. Export IPA file with modified application.
+#       7. Remove temporary project_cp directory.
+
 tasks:
-    create_dir:
-        path: local_path
-    clone:
+    - create_dir:
+        path: project_cp
+    - clone:
         repository_type: svn
-        repository_path: remote_path
-        clone_path: local_path
-    remove_dir:
-        path: local_path
+        repository_path: https://repository.com/path
+        clone_path: project_cp
+    - replace_contents:
+        path: project_cp/Project/Settings.h
+        to_replace: '(#define\s+API_KEY\s+)[^\s]+'
+        replace_with: '\1@"SECRET_API_KEY"'
+    - plist_replace:
+        path: project_cp/Project/Info.plist
+        contents: 
+            CFBundleVersion: '1.0'
+            CFBundleShortVersionString: '1.0'
+    - exchange_file_remote:
+        path: project_cp/Project/Default@2x.png
+        remote_path: https://remote.server.com/path/Default@2x.png
+    - exchange_file_remote:
+        path: project_cp/Project/Default-568h@2x.png
+        remote_path: https://remote.server.com/path/Default-568h@2x.png
+    - export_ipa:
+        project_path: project_cp/Project.xcodeproj
+        scheme: Project
+        archive_path: project_cp/Project.xcarchive
+        ipa_path: Project.ipa
+        provisioning_profile: Provisioning Profile Name
+    - remove_dir:
+        path: project_cp
