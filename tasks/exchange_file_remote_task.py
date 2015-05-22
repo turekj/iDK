@@ -8,7 +8,7 @@ class ExchangeFileWithRemoteTask(core.task.Task):
 		path = parameters['path']
 		remote_path = parameters['remote_path']
 
-		with open(path, 'w') as file_handle:
+		with open(path, 'w+') as file_handle:
 			response = urllib2.urlopen(remote_path)
 			contents = response.read()
 			file_handle.write(contents)
