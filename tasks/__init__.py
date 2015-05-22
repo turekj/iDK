@@ -1,7 +1,4 @@
-import create_dir_task
-import remove_dir_task
-import clone_task
-import plist_replace_task
-import replace_contents_task
-import exchange_file_remote_task
-import export_ipa_task
+import os
+import glob
+modules = glob.glob(os.path.dirname(__file__)+"/*.py")
+__all__ = [ os.path.basename(f)[:-3] for f in modules]
