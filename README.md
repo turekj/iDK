@@ -44,4 +44,17 @@ Remember **iDK** is in the alpha stage right now. Although it can be functional 
 
 ## Configuration
 
-To be added.
+Example configuration can be found under [example.yaml](https://github.com/turekj/iDK/blob/master/example.yaml) in the repository. It is specified in [YAML](http://en.wikipedia.org/wiki/YAML) format. All the tasks are gathered in the list under the `tasks` key. Every task is described as a dictionary with following structure:
+
+```yaml
+task_name:
+    first_parameter_name: first_parameter_value
+    second_parameter_name: second_parameter_value
+```
+
+## Credits
+
+Jakub Turek
+
+- [@KubaTurek](https://twitter.com/KubaTurek)
+- [jakubturek.pl](http://jakubturek.pl)
